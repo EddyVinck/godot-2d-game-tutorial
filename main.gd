@@ -17,10 +17,10 @@ func game_over():
 	$HUD.show_game_over()
 	$DeathSound.play()
 	$Music.stop()
+	get_tree().call_group("mobs", "queue_free")
 
 func new_game():
 	score = 0
-	get_tree().call_group("mobs", "queue_free")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
